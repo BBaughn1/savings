@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Savings</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="header">
+	<ul>
+		<li><%= link_to 'Coupons', root_path %></li>
+		<li><%# link_to '' %></li>
+		<% if user_signed_in? %>
+			<li><%= link_to "New Post", new_post_path %></li>
+			<li><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
+		<% else %>
+		<%# if !user_signed_in? %>
+			<li><a href="./users/sign_in">Sign In</a></li>
+		<% end %>
+	</ul>
+</div>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<%= yield %>
+
+</body>
+</html>
