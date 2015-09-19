@@ -1,7 +1,5 @@
 <% @posts.each do |post| %>
-	<p>
-  		<%= image_tag post.image.url(:medium) %>
-  	</p>
+  <%= image_tag post.image.url(:medium)  if post.image.present? %>
 <% end %>
 <h1 class="title">
 	<%= @post.title %>
