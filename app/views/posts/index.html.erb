@@ -5,7 +5,7 @@
       <%= post.created_at.strftime("%B, %d, %Y") %>
     </p>
     <p>
-    	<%# image_tag @post.image.url(:thumb) %>
+    	<%= image_tag post.image.url(:thumb) if post.image.present? %>
     </p>
   </div>
 <% end %>
