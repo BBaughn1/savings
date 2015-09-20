@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
+
+	before_action :find_post, only: [:show, :edit, :update, :destroy]
 	def index
-		@posts = Post.order('created_at DESC')
+		@posts = Post.all.limit(5).order('created_at DESC')
 	end
 
 	def new
@@ -15,17 +17,19 @@ class PostsController < ApplicationController
 
 	def create
 		@post = Post.new(post_params)
-		@post.save
-
-		redirect_to @post
+		if @post.save
+			redirect_to @post, notice: "Post was saved"
+		else
+			render 'new', notice: "I could not save the post. Call me for help if it keeps happening"
+		end
 	end
 
 	def show
-		@post = Post.find(params[:id])
+		#@post = Post.find(params[:id])
 	end
 
 	def edit
-		@post = Post.find(params[:id])
+		#@post = Post.find(params[:id])
 	end
 
 	def update
@@ -39,7 +43,7 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
-		@post = Post.find(params[:id])
+		#@post = Post.find(params[:id])
 		@post.destroy
 
 		redirect_to root_path
@@ -48,6 +52,10 @@ class PostsController < ApplicationController
 
 	private
 	def post_params
-		params.require(:post).permit(:title, :body, :image)
+		params.require(:post).permit(:title, :body, :image, :slug)
+	end
+
+	def find_post
+		@post = Post.friendly.find(params[:id])
 	end
 end

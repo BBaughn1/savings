@@ -1,15 +1,29 @@
-<% @posts.each do |post| %>
-	<%= link_to post do %>
+<div class="brag">
+	<%= image_tag 'bg.jpg' %>
+	<div class="hero">
+		<span>Save more with the</span>
+		<h1>SAVAGELY SAVER</h1>
+	</div>
+</div>
+<div class="wrap">
+	<h2>Most Recent Coupons<br><button class="all"><%# link_to 'All Coupons',  %>All Coupons</button></h2>
+	<% @posts.each do |post| %>
 	  <div class="post_wrapper">
 	  	<div class="title">
+			<%= link_to post do %>
 	  		<span><%= link_to post.title, post %></span>
 	  	</div>
 	  	<p>
-	    	<%= image_tag post.image.url(:thumb) if post.image.present? %>
+	  		<%= link_to post do %>
+	    		<%= image_tag post.image.url(:thumb) if post.image.present? %>
+    		<% end %>
 	    </p>
 	    <p class="date">
-	      <%= post.created_at.strftime("%B, %d, %Y") %>
+	    	<%= link_to post do %>
+	      		<%= post.created_at.strftime("%B, %d, %Y") %>
+      		<% end %>
 	    </p>
 	  </div>
   <% end %>
 <% end %>
+</div>
