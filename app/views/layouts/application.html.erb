@@ -14,15 +14,18 @@
 		<% if user_signed_in? %>
 			<li><%= link_to "New Post", new_post_path %></li>
 			<li><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
+			<p class="notice"><%= notice %></p>
+			<p class="alert"><%= alert %></p>
 		<% else %>
 		<%# if !user_signed_in? %>
 			<li><a href="./users/sign_in">Sign In</a></li>
 		<% end %>
 	</ul>
 </div>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
+
+<div class="posts">
+	<%= yield %>
+</div>
 
 </body>
 </html>
