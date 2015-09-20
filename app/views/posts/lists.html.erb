@@ -1,14 +1,5 @@
-<div class="brag">
-	<%= image_tag 'bg.jpg' %>
-	<div class="hero">
-		<span>Save more with the</span>
-		<h1>SAVAGELY SAVER</h1>
-	</div>
-</div>
-<div class="wrap">
-	<h2>Most Recent Coupons<br><button class="all"><%# link_to 'All Coupons', lists %>All Coupons</button></h2>
-	<% @posts.each do |post| %>
-  	<div class="post_wrapper">
+<%= @posts.each do |post| %>
+	<div class="post_wrapper">
 	  	<div class="title">
 			<%= link_to post do %>
 	  		<span><%= link_to post.title, post %></span>
@@ -23,7 +14,5 @@
 	      		<%= post.created_at.strftime("%B, %d, %Y") %>
       		<% end %>
 	    </p>
-  	</div>
-			<% end %>
-	<% end %>
-</div>
+	  </div>
+<% end %>

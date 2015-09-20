@@ -106,7 +106,23 @@ body{
 	.image{
 		margin-top: 150px;
 	}
+
 }
 #comments{
 	margin: 0 10px;
+}
+.ad{
+	float: left;
+	margin: 20px;
+	height: 330px;
+	width: 150px;
+	border: 1px solid #E9E9E9;
+	position: absolute;
+	top: 700px;
+	text-align: center;
+	.add_space{
+		display: block;
+		border: 1px solid #E9E9E9;
+		height: 108px;
+	}
 }

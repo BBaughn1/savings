@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
 	before_action :find_post, only: [:show, :edit, :update, :destroy]
 	def index
-		@posts = Post.all.limit(5).order('created_at DESC')
+		@posts = Post.all.order('created_at DESC')
 	end
 
 	def new
@@ -32,6 +32,10 @@ class PostsController < ApplicationController
 		#@post = Post.find(params[:id])
 	end
 
+	def lists
+		@posts = Post.all.order('created_at DESC')
+	end
+
 	def update
 		@post = Post.find(params[:id])
 
@@ -44,9 +48,11 @@ class PostsController < ApplicationController
 
 	def destroy
 		#@post = Post.find(params[:id])
-		@post.destroy
-
-		redirect_to root_path
+		if @post.destroy
+			redirect_to root_path
+		else
+			redirect_to post_path, notice: "I couldn't be deleted for some reason. Try again or contact me"
+		end
 	end
 
 

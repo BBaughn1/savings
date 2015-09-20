@@ -12,7 +12,7 @@
 		<li><%= link_to 'Coupons', root_path %></li>
 		<li><%# link_to '' %></li>
 		<% if user_signed_in? %>
-			<li><%= link_to "New Post", new_post_path %></li>
+			<li><%= link_to "New Coupon", new_post_path %></li>
 			<li><%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
 			<p class="notice"><%= notice %></p>
 			<p class="alert"><%= alert %></p>
@@ -26,6 +26,17 @@
 
 <div class="posts">
 	<%= yield %>
+</div>
+<div class="ad">
+	<div class="add_space">
+		<p>An Ad</p>
+	</div>
+	<div class="add_space">
+		<p>An Ad</p>
+	</div>
+	<div class="add_space">
+		<p>An Ad</p>
+	</div>
 </div>
 
 </body>
